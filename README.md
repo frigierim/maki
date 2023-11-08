@@ -108,5 +108,23 @@ After the final review approval, a Maki team member will merge the icon branch t
 #### 2: Update the Maki website
 In the maki-icons repository, update the Maki dependency version number in the package.json file.
 
+
+#### notes
+I created a fork of this repo to use the export scripts from osmic project and create a sprite atlas for these icons.
+Unfortunately the inkscape render of the SVG atlas is using a weird scaling ratio, so symbols position does not match the exact coordinates used in the script.
+To work around this issue, the process should be:
+
+* Run the export script:
+
+    tools/export.py tools/config/sprites.yaml 
+
+* Open export/icons.svg in GIMP
+
+* Import with a X and Y ratio of 2, so we create the high dpi version of the atlas
+
+* Export the image as PNG 
+
+This way the values reported in export/icons.json perfectly match the resulting PNG.
+
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fmaki.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fmapbox%2Fmaki?ref=badge_large)
