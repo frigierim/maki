@@ -439,11 +439,13 @@ def exportSprite(config, size_filter, num_icons):
                     child.set('transform', 'translate('+str(x)+','+str(y)+')')
                     sprite.append(child)
 
+                # this is the scale factor used when importing SVG from GIMP
+                scaleFactor = 1.5
                 atlas_json[icon_id] = {
-                        "x" : 2 * (x - icon_padding),        # we use coordinates for the highDPI version
-                        "y" : 2 * (y - icon_padding),        # we use coordinates for the highDPI version
-                        "width" : 2 * (size + icon_padding * 2),
-                        "height" : 2 * (size + icon_padding * 2),
+                        "x" : scaleFactor * (x - icon_padding),        # we use coordinates for the highDPI version
+                        "y" : scaleFactor * (y - icon_padding),        # we use coordinates for the highDPI version
+                        "width" : scaleFactor * (size + icon_padding * scaleFactor) ,
+                        "height" : scaleFactor * (size + icon_padding * scaleFactor) ,
                         "pixelRatio" : 1
                         }
 
